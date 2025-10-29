@@ -5,7 +5,6 @@
 
 Smart CUDA library is a lightweight C/C++ wrapper of the CUDA runtime API for productive natural-like CUDA programming. Smart CUDA follows the natural CUDA programming style; however, it provides low level abstraction to allow for a more convenient programming. In this way, Smart CUDA enhances developer productivity while attaining very high performance. Smart CUDA integrates seamlessly with C/C++ arrays and pointers, STL vector, and Thrust arrays. Smart CUDA only wraps the data on the device and host, therefore data on the host and device can have several wrappers and different views. This makes it very flexible, and allows easy integration with other platform and libraries.
 
-# Why Smart CUDA library? 
 Even though I am relatively new to C/C++ and CUDA programming, I realized that a lightweight wrapper could boost gpu programming productivity. Thus, I developed several wrappers that preserved the natural programming style as I went through the CUDA Programming Guide. Smart CUDA is the compilation of the basic wrappers I have currently developed. Smart CUDA library is meant to complement the efforts of other libraries such as [Thrust](http://thrust.github.io/) and [VexCL](http://ddemidov.github.io/vexcl) and help boost gpu programming productivity.
 
 ***
@@ -231,7 +230,7 @@ __device__ inline int __local_size(int dim = -1);
 __device__ inline int __launch_size(int dim = -1);
 __device__ inline int __global_size(int dim = -1);
 
-``` 
+```
 
 
 ## Indexing and Data Access (up to 4D) 
@@ -439,7 +438,7 @@ template <typename T, class Op> __global__
 template <typename T, class Op> __global__
  void appy_func_core(T* dest, T* src1, T* src2, const int size, Op fn);
 
-``` 
+```
 
 * New Kernel function ``` transform_core```, perform parallel element wise transformations on allocated device arrays. Supports up to 10 allocated device arrays
 ```C++
@@ -456,7 +455,7 @@ template <typename T, class Op> __global__
 
 ...
 
-``` 
+```
 
 * New Kernel function ``` transform_core_t```, perform parallel element wise transformations on allocated device arrays of different types. Supports up to 10 allocated device arrays and types
 ```C++ 
@@ -474,7 +473,7 @@ template <typename T, typename T1, typename T2,  typename T3, typename T4, typen
 
 ...
 
-``` 
+```
 
 * Simple Reduction function and function operators for reductions on gpu. Customer implementation of smartOperator can be used with for the reduction kernel.
 
@@ -493,7 +492,7 @@ template<typename T, class Op>
 void smartReduce_kl(T *answer, T *partial, const T *in, size_t N, int numBlocks, int numThreads, Op fn );
 
 
-``` 
+```
 
 * Smart Random library for random number generation in on device kernels. Use of a default random number that can be called from any part of the code. Smart Random library provides a lightweight wrapper on cuRand library.
 
@@ -504,7 +503,7 @@ Functions:
 __host__ cudaError_t initDefaultRand(int size = 64 * 64, int seed = time(NULL));
 __host__ cudaError_t releaseDefaultRand();
 
-``` 
+```
 
 Usage:
 ```C++ 
@@ -515,7 +514,7 @@ initDefaultRand(256*256);
 
 releaseDefaultRand(); //// called when done using defaultStates to release memory allocated;
 
-``` 
+```
 
 
 * Other Smart Random library functions and kernels
@@ -553,7 +552,7 @@ template <typename T>
 __host__ cudaError_t smartRandr(T *dev_Array, T min, T max, const int sizeX, const int sizeY, const int sizeZ, const int sizeW, curandState *state = defaultStates);
 
 
-``` 
+```
 
 ***
 
